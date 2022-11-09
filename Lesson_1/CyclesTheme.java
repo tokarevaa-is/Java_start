@@ -2,43 +2,43 @@ public class CyclesTheme {
     public static void main(String[] args) {
         // Подсчет суммы четных и нечетных чисел
         System.out.println("1. Подсчет суммы четных и нечетных чисел");
-        int intA = -10;
-        int intB = 21;
-        int value = intA;
+        int num1 = -10;
+        int num2 = 21;
+        int srcNum = num1;
         int sumEven = 0;
         int sumOdd = 0;
         do {
-            if (value % 2 == 0) 
-                sumEven += value;
+            if (srcNum % 2 == 0) 
+                sumEven += srcNum;
             else
-                sumOdd += value;
+                sumOdd += srcNum;
 
-            value++;
-        } while (value <= intB);
-        System.out.println("В промежутке [" + intA + ", " + intB +
-            "] сумма четных чисел = " + sumEven + ", а нечетных = " + sumOdd);
+            srcNum++;
+        } while (srcNum <= num2);
+        System.out.println("В промежутке [" + num1 + ", " + num2 +
+                "] сумма четных чисел = " + sumEven + ", а нечетных = " + sumOdd);
 
         // Вывод чисел в интервале (min и max) в порядке убывания
         System.out.println("\n2. Вывод чисел в интервале (min и max) в порядке убывания");
-        int valueA = 10;
-        int valueB = 5;
-        int valueC = -1;
-        int valueMax = 0;
-        int valueMin = 0;
+        num1 = 10;
+        num2 = 5;
+        int num3 = -1;
+        int maxValue = 0;
+        int minValue = 0;
 
         // Определить максимальное и минимальное значение
-        if (valueA > valueB) {
-            valueMax = valueA;
-            valueMin = valueB;
+        if (num1 > num2) {
+            maxValue = num1;
+            minValue = num2;
         } else {
-            valueMax = valueB;
-            valueMin = valueA;
+            maxValue = num2;
+            minValue = num1;
         }
-        if (valueMin > valueC)
-            valueMin = valueC;
+        if (minValue > num3)
+            minValue = num3;
 
         // Вывести интервал
-        for (int i = valueMax - 1; i > valueMin; i--) {
+        for (int i = maxValue - 1; i > minValue; i--) {
             System.out.print(i + " ");
         }
         System.out.println("");
@@ -60,14 +60,14 @@ public class CyclesTheme {
 
         // Вывод чисел на консоль в несколько строк
         System.out.println("\n4. Вывод чисел на консоль в несколько строк");
-        intA = 1;
-        intB = 24;
+        num1 = 1;
+        num2 = 24;
         int length = 5;
         int counter = 0;
 
-        for (int i = intA; i < intB || counter != 0; i += 2) {
+        for (int i = num1; i < num2 || counter != 0; i += 2) {
             counter++;
-            if (i < intB)
+            if (i < num2)
                 System.out.printf(" %2d", i);
             else
                 System.out.printf(" %2d", 0);
@@ -79,21 +79,23 @@ public class CyclesTheme {
         }
 
         // Проверка количества единиц на четность
-        System.out.println("\n 5. Проверка количества единиц на четность");
+        System.out.println("\n5. Проверка количества единиц на четность");
         baseValue = 3242592;
         int findValue = 2;
         boolean isOdd = false;
-        value = baseValue;
+        srcNum = baseValue;
 
-        while (value != 0) {
-            if (value % 10 == findValue)
+        while (srcNum != 0) {
+            if (srcNum % 10 == findValue)
                 isOdd = !isOdd;
-            value /= 10;
+            srcNum /= 10;
         }
         if (isOdd)
-            System.out.printf("Число %d содержит %d нечётное количество единиц", baseValue, findValue);
+            System.out.printf("Число %d содержит %d нечётное количество единиц%n", 
+                    baseValue, findValue);
         else
-            System.out.printf("Число %d содержит %d чётное количество единиц", baseValue, findValue);
+            System.out.printf("Число %d содержит %d чётное количество единиц%n", 
+                    baseValue, findValue);
 
         // Отображение фигур в консоли
         System.out.println("\n6. Отображение фигур в консоли");
@@ -105,6 +107,7 @@ public class CyclesTheme {
         }
         System.out.println("");
 
+        // Треугольник 1
         intX = intY = 5;
         while (intY > 0) {
             intX = intY;
@@ -117,27 +120,28 @@ public class CyclesTheme {
         }
         System.out.println("");
 
+        // Треугольник 2
         intX = 3;
-        intA = 0;
+        num1 = 0;
         iterator = 1;
         // Цикл по строкам
         do {
-            intB = 0;
+            num2 = 0;
 
             // Цикл по столбцам
             do {
-                intB++;
+                num2++;
                 System.out.print("*");
-            } while (intB <= intA);
+            } while (num2 <= num1);
             System.out.println("");
 
             // Доходим до границы фигуры и возвращаемся
-            if (intA == intX) {
+            if (num1 == intX) {
                 iterator *= (-1);
             }
 
-            intA += iterator;
-        } while (intA >= 0);
+            num1 += iterator;
+        } while (num1 >= 0);
 
         // Отображение ASCII-символов
         System.out.println("\n7. Отображение ASCII-символов");
@@ -160,11 +164,11 @@ public class CyclesTheme {
         System.out.println("\n8. Проверка, является ли число палиндромом");
         baseValue = 12344321;
         reverseValue = 0;
-        value = baseValue;
-        while (value != 0) {
-            currentNumber = value % 10;
+        srcNum = baseValue;
+        while (srcNum != 0) {
+            currentNumber = srcNum % 10;
             reverseValue = reverseValue * 10 + currentNumber;
-            value /= 10;
+            srcNum /= 10;
         }
 
         if (baseValue == reverseValue)
@@ -174,8 +178,8 @@ public class CyclesTheme {
 
         // Определение, является ли число счастливым
         System.out.println("\n\n9. Определение, является ли число счастливым");
-        intA = 0;
-        intB = 0;
+        num1 = 0;
+        num2 = 0;
         int sumA = 0;
         int sumB = 0;
         baseValue = 123321;
@@ -185,18 +189,18 @@ public class CyclesTheme {
             currentNumber = (baseValue / (int)Math.pow(10, (6 - (counter + 1)))) % 10;
             if (counter / 3 == 0) {
                 // Обрабатываем первую тройку
-                intA = intA * 10 + (currentNumber);
+                num1 = num1 * 10 + (currentNumber);
                 sumA += currentNumber;
             } else {
                 // Обрабатываем вторую тройку
-                intB = intB * 10 + (currentNumber);
+                num2 = num2 * 10 + (currentNumber);
                 sumB += currentNumber;
             }
             counter++;
         }
 
-        System.out.printf("Сумма цифр %d = %d%n", intA, sumA);
-        System.out.printf("Сумма цифр %d = %d%n", intB, sumB);
+        System.out.printf("Сумма цифр %d = %d%n", num1, sumA);
+        System.out.printf("Сумма цифр %d = %d%n", num2, sumB);
         if (sumA == sumB)
             System.out.println("Число является счастливым");
         else

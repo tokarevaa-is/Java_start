@@ -47,15 +47,15 @@ public class IfElseStatementTheme {
 
         // Работа с числом
         System.out.println("\n3. Работа с числом");
-        int value = 57;
-        System.out.println("Число: " + value);
-        if (value != 0) {
-            if (value % 2 == 0)
+        int srcNum = 57;
+        System.out.println("Число: " + srcNum);
+        if (srcNum != 0) {
+            if (srcNum % 2 == 0)
                 System.out.println("Число чётное");
             else
                 System.out.println("Число нечётное");
 
-            if (value > 0)
+            if (srcNum > 0)
                 System.out.println("Число положительное");
             else
                 System.out.println("Число отрицательное");
@@ -63,26 +63,26 @@ public class IfElseStatementTheme {
 
         // Поиск одинаковых цифр в числах
         System.out.println("\n 4. Поиск одинаковых цифр в числах");
-        int int1 = 325;
-        int int2 = 345;
+        int num1 = 325;
+        int num2 = 345;
         boolean isFounded = false;
-        System.out.println("Числа " + int1 + " и " + int2);
+        System.out.println("Числа " + num1 + " и " + num2);
         int intChar1;
         int intChar2;
-        intChar1 = int1 / 100;
-        intChar2 = int2 / 100;
+        intChar1 = num1 / 100;
+        intChar2 = num2 / 100;
         if (intChar1 == intChar2) {
             System.out.println("Одинаковое число " + intChar2 + " в разряде 1");
             isFounded = true;
         }
-        intChar1 = (int1 % 100) / 10;
-        intChar2 = (int2 % 100) / 10;
+        intChar1 = (num1 % 100) / 10;
+        intChar2 = (num2 % 100) / 10;
         if (intChar1 == intChar2) {
             System.out.println("Одинаковое число " + intChar2 + " в разряде 2");
             isFounded = true;
         }
-        intChar1 = int1 % (int1 / 10 );
-        intChar2 = int2 % (int2 / 10 );
+        intChar1 = num1 % (num1 / 10 );
+        intChar2 = num2 % (num2 / 10 );
         if (intChar1 == intChar2) {
             System.out.println("Одинаковое число " + intChar2 + " в разряде 3");
             isFounded = true;
@@ -93,13 +93,13 @@ public class IfElseStatementTheme {
 
         // Определение буквы, числа или символа по их коду
         System.out.println("\n5. Определение буквы, числа или символа по их коду");
-        char charA = '\u0058';
-        System.out.println("Символ: " + charA);
-        if (charA >= '0' && charA <= '9')
+        char symbol = '\u0058';
+        System.out.println("Символ: " + symbol);
+        if (symbol >= '0' && symbol <= '9')
             System.out.println("Символ является числом");
-        else if (charA >= 'a' && charA <= 'z')
+        else if (symbol >= 'a' && symbol <= 'z')
             System.out.println("Символ является строчной буквой");
-        else if (charA >= 'A' && charA <= 'Z')
+        else if (symbol >= 'A' && symbol <= 'Z')
             System.out.println("Символ является прописной буквой");
         else
             System.out.println("Символ не является ни буквой ни числом");
@@ -170,11 +170,11 @@ public class IfElseStatementTheme {
         int released100 = 10;
         boolean isReleased = true;
         System.out.println("Номиналы: 1 - " + count1 + 
-            ", 10 - " + count10 + 
-            ", 100 - " + count100);
+                ", 10 - " + count10 + 
+                ", 100 - " + count100);
         System.out.println("Требуется: 1 - " + (cash % (cash / 10 )) + 
-            ", 10 - " + ((cash % 100) / 10) + 
-            ", 100 - " + (cash / 100));
+                ", 10 - " + ((cash % 100) / 10) + 
+                ", 100 - " + (cash / 100));
 
         // Выдаём 100.
         // Проверить, хватает ли 100 купюр
@@ -216,8 +216,8 @@ public class IfElseStatementTheme {
 
         if (isReleased) {
             System.out.println("Отпущено: 1 - " + released1 + 
-                ", 10 - " + released10 + 
-                ", 100 - " + released100);
+                    ", 10 - " + released10 + 
+                    ", 100 - " + released100);
         }
     }
 }
