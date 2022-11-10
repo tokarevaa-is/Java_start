@@ -38,40 +38,31 @@ public class VariablesTheme {
         // Вывод min и max значений целых числовых типов
         System.out.println("\n4. Вывод min и max значений целых числовых типов");
         int intMax = Integer.MAX_VALUE;
-        int intMin = Integer.MIN_VALUE;
         byte byteMax = Byte.MAX_VALUE;
-        byte byteMin = Byte.MIN_VALUE;
         short shortMax = Short.MAX_VALUE;
-        short shortMin = Short.MIN_VALUE;
         long longMax = Long.MAX_VALUE;
-        long longMin = Long.MIN_VALUE;
-        System.out.println("Integer Maximum: " + intMax + "," + (intMax++) + "," + (intMax--));
-        System.out.println("Integer Minimum: " + intMin + "," + (intMin++) + "," + (intMin--));
-        System.out.println("Byte Maximum: " + byteMax + "," + (byte)(byteMax++) + "," + (byte)(byteMax--));
-        System.out.println("Byte Minimum: " + byteMin + "," + (byte)(byteMin++) + "," + (byte)(byteMin--));
-        System.out.println("Short Maximum: " + shortMax + "," + (short)(shortMax++) + "," + (short)(shortMax--));
-        System.out.println("Short Minimum: " + shortMin + "," + (short)(shortMin++) + "," + (short)(shortMin--));
-        System.out.println("Long Maximum: " + longMax + "," + (long)(longMax++) + "," + (long)(longMax--));
-        System.out.println("Long Minimum: " + longMin + "," + (long)(longMin++) + "," + (long)(longMin--));
+        System.out.println("Integer Maximum: " + intMax + "," + (++intMax) + "," + (--intMax));
+        System.out.println("Byte Maximum: " + byteMax + "," + (++byteMax) + "," + (--byteMax));
+        System.out.println("Short Maximum: " + shortMax + "," + (++shortMax) + "," + (--shortMax));
+        System.out.println("Long Maximum: " + longMax + "," + (++longMax) + "," + (--longMax));
 
         // Перестановка значений переменных
         System.out.println("\n5. Перестановка значений переменных");
         int num1 = 2;
         int num2 = 5;
-        int intBuffer = num2;
+        int buffer = num2;
 
         System.out.println("Перестановка с помощью третьей переменной:");
         System.out.println("A: " + num1 + ", B: " + num2);
         num2 = num1;
-        num1 = intBuffer;
+        num1 = buffer;
         System.out.println("A: " + num1 + ", B: " + num2);
 
         System.out.println("\nПерестановка с помощью арифметических операций:");
         System.out.println("A: " + num1 + ", B: " + num2);
-        num1 += num2;
-        num2 -= num1;
-        num2 -= (num2 + num2);
         num1 -= num2;
+        num2 += num1;
+        num1 =  num2 - num1;
         System.out.println("A: " + num1 + ", B: " + num2);
 
         System.out.println("\nПерестановка с помощью побитовой операции:");
@@ -97,11 +88,11 @@ public class VariablesTheme {
         // Вывод количества сотен, десятков и единиц числа
         System.out.println("\n7. Вывод количества сотен, десятков и единиц числа");
         int srcNum = 123;
-        int hundred = srcNum / 100;
+        int hundreds = srcNum / 100;
         int tens = (srcNum /10) % 10;
         int ones = srcNum % 10;
         System.out.println("Число " + srcNum + " содержит:");
-        System.out.println(hundred + " сотен");
+        System.out.println(hundreds + " сотен");
         System.out.println(tens + " десятков");
         System.out.println(ones + " единиц");
 
@@ -122,13 +113,13 @@ public class VariablesTheme {
         // Вывод произведения и суммы цифр числа
         System.out.println("\n9. Вывод произведения и суммы цифр числа");
         srcNum = 345;
-        hundred = srcNum / 100;
+        hundreds = srcNum / 100;
         tens = (srcNum /10) % 10;
         ones = srcNum % 10;
-        int sumOfDigits = hundred + tens + ones;
-        int multiplyOfDigits = hundred * tens * ones;
-        System.out.println("Сумма цифр числа " + srcNum + " = " + sumOfDigits);
-        System.out.println("Произведение цифр числа " + srcNum + " = " + multiplyOfDigits);
+        int sumDigits = hundreds + tens + ones;
+        int productDigits = hundreds * tens * ones;
+        System.out.println("Сумма цифр числа " + srcNum + " = " + sumDigits);
+        System.out.println("Произведение цифр числа " + srcNum + " = " + productDigits);
 
         // Вывод времени
         System.out.println("\n10. Вывод времени");
