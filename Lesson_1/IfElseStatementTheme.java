@@ -189,7 +189,6 @@ public class IfElseStatementTheme {
             released100 = count100;
             count100 = 0;
         }
-        // System.out.println(count100 + " / " + cash + " / " + released100);
         cash -= (released100 * 100);
 
         // Выдаём 10
@@ -202,7 +201,6 @@ public class IfElseStatementTheme {
             released10 = count10;
             count10 = 0;
         }
-        // System.out.println(count10 + " / " + cash + " / " + released10);
         cash -= (released10 * 10);
 
         // Выдаём 1
@@ -214,7 +212,6 @@ public class IfElseStatementTheme {
             System.out.println("Не удаётся выдать запрашиваемую сумму");
             isReleased = false;
         }
-        // System.out.println(count1 + " / " + cash + " / " + released1);
         cash -= released1;
 
         if (isReleased) {
