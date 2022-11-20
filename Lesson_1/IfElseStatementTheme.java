@@ -1,6 +1,6 @@
 public class IfElseStatementTheme {
     public static void main(String[] args) {
-        // Перевод псевдокода на язык Java (это название задачи)
+        // Перевод псевдокода на язык Java
         System.out.println("1. Перевод псевдокода на язык Java");
         int age = 18;
         boolean isSexMale = true;
@@ -65,7 +65,7 @@ public class IfElseStatementTheme {
         System.out.println("\n4. Поиск одинаковых цифр в числах");
         num1 = 325;
         num2 = 345;
-        boolean isFounded = false;
+        boolean equals = false;
         System.out.println("Числа " + num1 + " и " + num2);
 
         // Ищем сотни
@@ -73,7 +73,7 @@ public class IfElseStatementTheme {
         int digit2 = num2 / 100;
         if (digit1 == digit2) {
             System.out.println("Одинаковое число " + digit2 + " в разряде 1");
-            isFounded = true;
+            equals = true;
         }
 
         // Ищем десятки
@@ -81,7 +81,7 @@ public class IfElseStatementTheme {
         digit2 = num2 / 10 % 10;
         if (digit1 == digit2) {
             System.out.println("Одинаковое число " + digit2 + " в разряде 2");
-            isFounded = true;
+            equals = true;
         }
 
         // Ищем единицы
@@ -89,10 +89,10 @@ public class IfElseStatementTheme {
         digit2 = num2 % 10;
         if (digit1 == digit2) {
             System.out.println("Одинаковое число " + digit2 + " в разряде 3");
-            isFounded = true;
+            equals = true;
         }
 
-        if (!isFounded)
+        if (!equals)
             System.out.println("Одинаковых чисел на идентичных разрядах не найдено");
 
         // Определение буквы, числа или символа по их коду
@@ -100,27 +100,25 @@ public class IfElseStatementTheme {
         char unknownSymbol = '\u0058';
         System.out.println("Символ: " + unknownSymbol);
         if (unknownSymbol >= '0' && unknownSymbol <= '9')
-            System.out.println("Символ является числом");
+            System.out.println("Является числом");
         else if (unknownSymbol >= 'a' && unknownSymbol <= 'z')
-            System.out.println("Символ является строчной буквой");
+            System.out.println("Является строчной буквой");
         else if (unknownSymbol >= 'A' && unknownSymbol <= 'Z')
-            System.out.println("Символ является прописной буквой");
+            System.out.println("Является прописной буквой");
         else
-            System.out.println("Символ не является ни буквой ни числом");
+            System.out.println("Не является ни буквой ни числом");
 
         // Определение суммы вклада и начисленных банком %
         System.out.println("\n6. Определение суммы вклада и начисленных банком %");
         double deposit = 300_000;
         double percentent = 10.0;
-        double percententSum = 0.0;;
-        double total = 0.0;
         if (deposit < 100_000)
             percentent = 5.0;
         else if (deposit >= 100_000 && deposit <= 300_000)
             percentent = 7.0;
 
-        percententSum = deposit * (percentent / 100.0);
-        total = deposit + percententSum;
+        double percententSum = deposit * (percentent / 100.0);
+        double total = deposit + percententSum;
 
         System.out.println("Сумма вклада: " + deposit);
         System.out.println("Начисленный процент: " + percententSum + " (" + percentent + "%)");
@@ -165,59 +163,67 @@ public class IfElseStatementTheme {
         // Подсчет количества банкнот
         System.out.println("\n9. Подсчет количества банкнот");
         int cash = 567;
+        sum = cash;
         int count1 = 50;
         int count10 = 5;
         int count100 = 10;
-        int released1 = 50;
-        int released10 = 5;
-        int released100 = 10;
+        int banknotesReleased1 = 50;
+        int banknotesReleased10 = 5;
+        int banknotesReleased100 = 10;
         boolean isReleased = true;
-        System.out.println("Номиналы: 1 - " + count1 + 
-                ", 10 - " + count10 + 
-                ", 100 - " + count100);
+
+        int banknotesRequired1 = cash % 10;
+        int banknotesRequired10 = (cash / 10) % 10;
+        int banknotesRequired100 = cash / 100;
+
+        // System.out.println("Номиналы: 1 - " + count1 + 
+        //         ", 10 - " + count10 + 
+        //         ", 100 - " + count100);
+        System.out.println("Номиналы: 1, 10, 100");
         System.out.println("Требуется: 1 - " + (cash % (cash / 10 )) + 
                 ", 10 - " + ((cash % 100) / 10) + 
-                ", 100 - " + (cash / 100));
+                ", 100 - " + banknotesRequired100);
 
         // Выдаём 100.
         // Проверить, хватает ли 100 купюр
-        if ((cash / 100 ) < count100) {
-            released100 = (cash / 100 );
-            count100 -= (cash / 100 );
+        if (banknotesRequired100 < count100) {
+            banknotesReleased100 = banknotesRequired100;
+            count100 -= banknotesRequired100;
         } else {
             // Если нет - отдаём все 100
-            released100 = count100;
+            banknotesReleased100 = count100;
             count100 = 0;
         }
-        cash -= (released100 * 100);
+        cash -= (banknotesReleased100 * 100);
 
         // Выдаём 10
         // Проверить, хватает ли 10 купюр
         if ((cash / 10 ) < count10) {
-            released10 = (cash / 10 );
+            banknotesReleased10 = (cash / 10 );
             count10 -= (cash / 10 );
         } else {
             // Если нет - отдаём все 10
-            released10 = count10;
+            banknotesReleased10 = count10;
             count10 = 0;
         }
-        cash -= (released10 * 10);
+        cash -= (banknotesReleased10 * 10);
 
         // Выдаём 1
         // Проверить, хватает ли 1 купюр
-        if ((cash ) < count1) {
-            released1 = cash;
+        if (cash < count1) {
+            banknotesReleased1 = cash;
             count1 -= cash;
         } else {
             System.out.println("Не удаётся выдать запрашиваемую сумму");
             isReleased = false;
         }
-        cash -= released1;
+        cash -= banknotesReleased1;
 
         if (isReleased) {
-            System.out.println("Отпущено: 1 - " + released1 + 
-                    ", 10 - " + released10 + 
-                    ", 100 - " + released100);
+            // System.out.println("Отпущено: 1 - " + banknotesReleased1 + 
+            //         ", 10 - " + banknotesReleased10 + 
+            //         ", 100 - " + banknotesReleased100);
+            System.out.println("Сумма выдачи: " + sum);
         }
     }
 }
