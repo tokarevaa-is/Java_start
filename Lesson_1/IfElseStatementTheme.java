@@ -69,26 +69,26 @@ public class IfElseStatementTheme {
         System.out.println("Числа " + num1 + " и " + num2);
 
         // Ищем сотни
-        int digit1 = num1 / 100;
-        int digit2 = num2 / 100;
-        if (digit1 == digit2) {
-            System.out.println("Одинаковое число " + digit2 + " в разряде 1");
+        int digitNum1 = num1 / 100;
+        int digitNum2 = num2 / 100;
+        if (digitNum1 == digitNum2) {
+            System.out.println("Одинаковое число " + digitNum2 + " в разряде 1");
             equals = true;
         }
 
         // Ищем десятки
-        digit1 = num1 / 10 % 10;
-        digit2 = num2 / 10 % 10;
-        if (digit1 == digit2) {
-            System.out.println("Одинаковое число " + digit2 + " в разряде 2");
+        digitNum1 = num1 / 10 % 10;
+        digitNum2 = num2 / 10 % 10;
+        if (digitNum1 == digitNum2) {
+            System.out.println("Одинаковое число " + digitNum2 + " в разряде 2");
             equals = true;
         }
 
         // Ищем единицы
-        digit1 = num1 % 10;
-        digit2 = num2 % 10;
-        if (digit1 == digit2) {
-            System.out.println("Одинаковое число " + digit2 + " в разряде 3");
+        digitNum1 = num1 % 10;
+        digitNum2 = num2 % 10;
+        if (digitNum1 == digitNum2) {
+            System.out.println("Одинаковое число " + digitNum2 + " в разряде 3");
             equals = true;
         }
 
