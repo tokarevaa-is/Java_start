@@ -1,7 +1,7 @@
 public class MyFirstGame {
     public static void main(String[] args) {
         System.out.println("Игра ''Угадай число''");
-        int randomNumber = ((int) (Math.random() * 100) % 99) + 1;
+        int randomNumber = ((int) (Math.random() * 100)) + 1;
         int playerNumber = 1;
         int step = 50;
         while (playerNumber != randomNumber) {

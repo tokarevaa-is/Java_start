@@ -45,8 +45,7 @@ public class CyclesTheme {
         int reverse = 0;
         int sumDigits = 0;
         while (originNum > 0) {
-            int digit = 0;
-            digit = originNum % 10;
+            int digit = originNum % 10;
             sumDigits += digit;
             reverse = reverse * 10 + digit;
             originNum /= 10;
@@ -69,7 +68,7 @@ public class CyclesTheme {
                 System.out.printf(" %2d", 0);
 
             if (counter == length) {
-                System.out.println("");
+                System.out.println();
                 counter = 0;
             }
         }
@@ -79,47 +78,46 @@ public class CyclesTheme {
         originNum = 3242592;
         int find = 2;
         boolean isOdd = false;
-        int srcNum = originNum;
+        int copyOriginNum = originNum;
 
-        while (srcNum > 0) {
-            if (srcNum % 10 == find)
+        while (copyOriginNum > 0) {
+            if (copyOriginNum % 10 == find)
                 isOdd = !isOdd;
-            srcNum /= 10;
+            copyOriginNum /= 10;
         }
         if (isOdd)
-            System.out.printf("Число %d содержит %d нечётное количество единиц%n", 
+            System.out.printf("Число %d содержит %d нечётное количество двоек%n", 
                     originNum, find);
         else
-            System.out.printf("Число %d содержит %d чётное количество единиц%n", 
+            System.out.printf("Число %d содержит %d чётное количество двоек%n", 
                     originNum, find);
 
         // Отображение фигур в консоли
         System.out.println("\n6. Отображение фигур в консоли");
-        int iterator = 0;
-        int intX;
-        int intY;
+        int coordinateX;
+        int coordinateY;
         for (int i = 0; i < 5; i++) {
             System.out.println("**********");
         }
-        System.out.println("");
+        System.out.println();
 
         // Треугольник 1
-        intX = intY = 5;
-        while (intY > 0) {
-            intX = intY;
-            while (intX > 0) {
+        coordinateX = coordinateY = 5;
+        while (coordinateY > 0) {
+            coordinateX = coordinateY;
+            while (coordinateX > 0) {
                 System.out.print("#");
-                intX--;
+                coordinateX--;
             }
-            System.out.print("\n");
-            intY--;
+            System.out.println();
+            coordinateY--;
         }
-        System.out.println("");
+        System.out.println();
 
         // Треугольник 2
-        intX = 3;
+        coordinateX = 3;
         num1 = 0;
-        iterator = 1;
+        counter = 1;
         // Цикл по строкам
         do {
             num2 = 0;
@@ -129,14 +127,14 @@ public class CyclesTheme {
                 num2++;
                 System.out.print("*");
             } while (num2 <= num1);
-            System.out.println("");
+            System.out.println();
 
             // Доходим до границы фигуры и возвращаемся
-            if (num1 == intX) {
-                iterator *= (-1);
+            if (num1 == coordinateX) {
+                counter *= (-1);
             }
 
-            num1 += iterator;
+            num1 += counter;
         } while (num1 >= 0);
 
         // Отображение ASCII-символов
@@ -145,14 +143,14 @@ public class CyclesTheme {
         byte acsiiInt = 0;
 
         // Выводим название столбцов
-        System.out.printf("%4S %4S%n", "Dec", "Char");
-        while (acsiiInt <= (int)'z' ){
-            symbol = (char)acsiiInt;
+        System.out.printf("%4s %4s%n", "Dec", "Char");
+        while (acsiiInt <= 'z') {
+            symbol = (char) acsiiInt;
 
             // Выводим символы до цифр
-            if (((acsiiInt < (int)'0' && (acsiiInt % 2) == 1)) ||
-                 (acsiiInt >= (int)'a' && acsiiInt <= (int)'z' && (acsiiInt % 2) == 1))
-                System.out.printf("%4d %4c%n", (int)acsiiInt, symbol);
+            if (((acsiiInt < '0' && (acsiiInt % 2) == 1)) ||
+                 (acsiiInt >= 'a' && acsiiInt <= 'z' && (acsiiInt % 2) == 1))
+                System.out.printf("%4d %4c%n", acsiiInt, symbol);
             acsiiInt++;
         }
 
@@ -160,11 +158,11 @@ public class CyclesTheme {
         System.out.println("\n8. Проверка, является ли число палиндромом");
         originNum = 12344321;
         reverse = 0;
-        srcNum = originNum;
-        while (srcNum != 0) {
-            int digit = srcNum % 10;
+        copyOriginNum = originNum;
+        while (copyOriginNum > 0) {
+            int digit = copyOriginNum % 10;
             reverse = reverse * 10 + digit;
-            srcNum /= 10;
+            copyOriginNum /= 10;
         }
 
         if (originNum == reverse)
@@ -180,19 +178,20 @@ public class CyclesTheme {
         int sumB = 0;
         originNum = 123321;
         counter = 0;
+        int numPart1 = num1 = originNum / 1000;
+        int numPart2 = num2 = originNum % 1000;
 
-        while ( counter < 6) {
-            int digit = (originNum / (int)Math.pow(10, (6 - (counter + 1)))) % 10;
-            if (counter / 3 == 0) {
-                // Обрабатываем первую тройку
-                num1 = num1 * 10 + (digit);
-                sumA += digit;
-            } else {
-                // Обрабатываем вторую тройку
-                num2 = num2 * 10 + (digit);
-                sumB += digit;
-            }
-            counter++;
+        while (counter < 3) {
+            int digitA = numPart1 % 10;
+            int digitB = numPart2 % 10;
+
+            numPart1 = numPart1 / 10;
+            numPart2 = numPart2 / 10;
+
+            sumA += digitA;
+            sumB += digitB;
+
+            counter ++;
         }
 
         System.out.printf("Сумма цифр %d = %d%n", num1, sumA);
@@ -206,32 +205,37 @@ public class CyclesTheme {
         System.out.println("\n10. Вывод таблицы умножения Пифагора");
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
-                // Чертим горизонтальные линии
-                if (i == 1) {
+
+                // Выводим шапку
+                if (i == 0) {
+                    if (j == 0)
+                        System.out.print("   ");
+                    else if (j == 1)
+                        System.out.printf("│");
+                    else
+                        System.out.printf("%3d", j);
+                } else if (i == 1) {
+                    // Чертим горизонтальные линии
                     if (j == 1)
                         System.out.print("┼──");
                     else 
                         System.out.print("───");
                 } else {
+
                     // Вывод самой первой клетки
-                    if (i == 0 && j == 0) {
-                        System.out.print("   ");
-                    } else if (j == 0) {
-                        // Выводим шапку строк
+                    if (j == 0) {
+                        // Выводим номера строк строк
                         System.out.printf("%3d", i);
                     } else if (j == 1) {
                         // Выводим вертикальные линии
                         System.out.print("│");
-                    } else if (i == 0) {
-                        // выводим первый столбец
-                        System.out.printf("%3d", j);
                     } else {
                         // Выводим содержимое таблицы
                         System.out.printf("%3d", (i * j));
                     }
                 }
             }
-            System.out.println("");
+            System.out.println();
         }
     }
 }
