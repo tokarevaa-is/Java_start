@@ -69,26 +69,26 @@ public class IfElseStatementTheme {
         System.out.println("Числа " + num1 + " и " + num2);
 
         // Ищем сотни
-        int digitNum1 = num1 / 100;
-        int digitNum2 = num2 / 100;
-        if (digitNum1 == digitNum2) {
-            System.out.println("Одинаковое число " + digitNum2 + " в разряде 1");
+        int hundreds1 = num1 / 100;
+        int hundreds2 = num2 / 100;
+        if (hundreds1 == hundreds2) {
+            System.out.println("Одинаковое число " + hundreds2 + " в разряде 1");
             equals = true;
         }
 
         // Ищем десятки
-        digitNum1 = num1 / 10 % 10;
-        digitNum2 = num2 / 10 % 10;
-        if (digitNum1 == digitNum2) {
-            System.out.println("Одинаковое число " + digitNum2 + " в разряде 2");
+        int tens1 = num1 / 10 % 10;
+        int tens2 = num2 / 10 % 10;
+        if (tens1 == tens2) {
+            System.out.println("Одинаковое число " + tens2 + " в разряде 2");
             equals = true;
         }
 
         // Ищем единицы
-        digitNum1 = num1 % 10;
-        digitNum2 = num2 % 10;
-        if (digitNum1 == digitNum2) {
-            System.out.println("Одинаковое число " + digitNum2 + " в разряде 3");
+        int ones1 = num1 % 10;
+        int ones2 = num2 % 10;
+        if (ones1 == ones2) {
+            System.out.println("Одинаковое число " + ones2 + " в разряде 3");
             equals = true;
         }
 
@@ -180,9 +180,9 @@ public class IfElseStatementTheme {
         //         ", 10 - " + count10 + 
         //         ", 100 - " + count100);
         System.out.println("Номиналы: 1, 10, 100");
-        System.out.println("Требуется: 1 - " + (cash % (cash / 10 )) + 
-                ", 10 - " + ((cash % 100) / 10) + 
-                ", 100 - " + banknotesRequired100);
+        // System.out.println("Требуется: 1 - " + (cash % (cash / 10 )) + 
+        //         ", 10 - " + ((cash % 100) / 10) + 
+        //         ", 100 - " + banknotesRequired100);
 
         // Выдаём 100.
         // Проверить, хватает ли 100 купюр
@@ -221,8 +221,9 @@ public class IfElseStatementTheme {
 
         if (isReleased) {
             // System.out.println("Отпущено: 1 - " + banknotesReleased1 + 
-            //         ", 10 - " + banknotesReleased10 + 
-            //         ", 100 - " + banknotesReleased100);
+            System.out.println("Требуется: 1 - " + banknotesReleased1 + 
+                    ", 10 - " + banknotesReleased10 + 
+                    ", 100 - " + banknotesReleased100);
             System.out.println("Сумма выдачи: " + sum);
         }
     }
