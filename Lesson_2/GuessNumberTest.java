@@ -1,35 +1,20 @@
 import java.util.Scanner;
-
 public class GuessNumberTest {
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        boolean answerCorrect = false;
+        
 
         // Инициализация игроков
         System.out.print("Введите имя игрока 1: ");
         Player player1 = new Player(scanner.next());
         System.out.print("Введите имя игрока 2: ");
         Player player2 = new Player(scanner.next());
+        GuessNumber game = new GuessNumber(player1, player2);
 
         do {
             // Инициируем новый раунд
-            GuessNumber game = new GuessNumber();
-            System.out.println("Число загадано.");
-            Player activePlayer = player1;
-
-            // Игроки по очереди пытаются угадать число
-            while (!answerCorrect) {
-
-                System.out.printf("Ход игрока %s. Отгадай число: ", activePlayer.getName());
-                activePlayer.setNumber(scanner.nextInt());
-                answerCorrect = game.isValueEquals(activePlayer.getNumber());
-
-                if (answerCorrect)
-                    System.out.printf("Игрок %s победил!\n", activePlayer.getName());
-                else
-                    activePlayer = (activePlayer == player1 ? player2 : player1);
-            }
+            game.runGame();
 
             // Продолжить выполнение?
         } while (checkResumeGame());
