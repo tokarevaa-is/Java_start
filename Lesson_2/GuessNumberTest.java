@@ -1,4 +1,5 @@
 import java.util.Scanner;
+
 public class GuessNumberTest {
     private static Scanner scanner = new Scanner(System.in);
 
@@ -12,25 +13,22 @@ public class GuessNumberTest {
 
         do {
             // Инициируем новый раунд
-            game.runGame();
-
+            game.run();
             // Продолжить выполнение?
-        } while (checkResumeGame());
+        } while (isExit());
     }
 
     // Продолжить или прервать игру
-    private static boolean checkResumeGame() {
+    private static boolean isExit() {
         boolean isAnswerCorrect = true;
+        String userAnswer;
         do {
             System.out.print("Хотите продолжить игру? [yes/no]: ");
-            String userAnswer = scanner.next();
-            if (userAnswer.equals("yes"))
-                return true;
-            else if (userAnswer.equals("no"))
-                return false;
-            else
-                isAnswerCorrect = false;
-        } while (!isAnswerCorrect);
+            userAnswer = scanner.next();
+        } while (!userAnswer.equals("yes") && !userAnswer.equals("no"));
+        
+        if (userAnswer.equals("yes"))
+            return true;
         return false;
     }
 }
