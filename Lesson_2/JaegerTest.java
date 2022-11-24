@@ -1,8 +1,6 @@
 public class JaegerTest {
     public static void main(String[] args) {
-
         // Инициализация роботов
-        Jaeger crimsonTyphoon = new Jaeger("Crimson Typhoon", 9, 8, 2);
         Jaeger tacitRonin = new Jaeger();
         tacitRonin.setName("Tacit Ronin");
         tacitRonin.setSpeed(8);
@@ -10,6 +8,7 @@ public class JaegerTest {
         tacitRonin.setArmor(3);
 
         // Выполнение действий
+        Jaeger crimsonTyphoon = new Jaeger("Crimson Typhoon", 9, 8, 2);
         crimsonTyphoon.move();
         crimsonTyphoon.attack(tacitRonin);
         crimsonTyphoon.attack(tacitRonin);

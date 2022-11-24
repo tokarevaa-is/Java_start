@@ -5,7 +5,7 @@ public class Jaeger {
     private int armor;
     private int health;
     private boolean alive;
-    private boolean moving = false;
+    private boolean moving;
 
     public Jaeger() {
         alive = true;

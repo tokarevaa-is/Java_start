@@ -14,7 +14,7 @@ public class GuessNumberTest {
 
         do {
             // Инициируем новый раунд
-            GuessNumber playRound = new GuessNumber();
+            GuessNumber game = new GuessNumber();
             System.out.println("Число загадано.");
             Player activePlayer = player1;
 
@@ -23,7 +23,7 @@ public class GuessNumberTest {
 
                 System.out.printf("Ход игрока %s. Отгадай число: ", activePlayer.getName());
                 activePlayer.setNumber(scanner.nextInt());
-                answerCorrect = playRound.isValueEquals(activePlayer.getNumber());
+                answerCorrect = game.isValueEquals(activePlayer.getNumber());
 
                 if (answerCorrect)
                     System.out.printf("Игрок %s победил!\n", activePlayer.getName());
