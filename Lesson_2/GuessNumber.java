@@ -25,7 +25,6 @@ public class GuessNumber {
     public void runGame() {
         puzzledNumber = ((int) (Math.random() * 100)) + 1;
         System.out.println("Число загадано.");
-        boolean answerCorrect = false;
         Player activePlayer = player2;
 
         // Игроки по очереди пытаются угадать число
