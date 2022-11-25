@@ -20,15 +20,12 @@ public class GuessNumberTest {
 
     // Продолжить или прервать игру
     private static boolean isExit() {
-        boolean isAnswerCorrect = true;
-        String userAnswer;
+        String playerAnswer;
         do {
             System.out.print("Хотите продолжить игру? [yes/no]: ");
-            userAnswer = scanner.next();
-        } while (!userAnswer.equals("yes") && !userAnswer.equals("no"));
+            playerAnswer = scanner.next();
+        } while (!playerAnswer.equals("yes") && !playerAnswer.equals("no"));
         
-        if (userAnswer.equals("yes"))
-            return true;
-        return false;
+        return playerAnswer.equals("yes");
     }
 }
