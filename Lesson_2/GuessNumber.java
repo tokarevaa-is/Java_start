@@ -21,19 +21,17 @@ public class GuessNumber {
             activePlayer = (activePlayer == player1 ? player2 : player1);
             System.out.printf("Ход игрока %s. Отгадай число: ", activePlayer.getName());
             activePlayer.setNumber(scanner.nextInt());
-        } while(!isValueEquals(activePlayer.getNumber()));
+        } while(!isNumberCorrect(activePlayer.getNumber()));
 
         System.out.printf("Игрок %s победил!\n", activePlayer.getName());
     }
 
     // Проверка предложенного варианта
-    private boolean isValueEquals(int assumedNumber) {
-        if (assumedNumber == secretNumber)
-            return true;
-        else if (assumedNumber < secretNumber)
+    private boolean isNumberCorrect(int assumedNumber) {
+        if (assumedNumber < secretNumber)
             System.out.printf("Число %d меньше того, что загадал компьютер\n", assumedNumber);
-        else
+        else if (assumedNumber > secretNumber)
             System.out.printf("Число %d больше того, что загадал компьютер\n", assumedNumber);
-        return false;
+        return true;
     }
 }
