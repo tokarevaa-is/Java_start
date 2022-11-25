@@ -28,10 +28,14 @@ public class GuessNumber {
 
     // Проверка предложенного варианта
     private boolean isNumberCorrect(int assumedNumber) {
-        if (assumedNumber < secretNumber)
+        if (assumedNumber < secretNumber) {
             System.out.printf("Число %d меньше того, что загадал компьютер\n", assumedNumber);
-        else if (assumedNumber > secretNumber)
+            return false;
+        }
+        else if (assumedNumber > secretNumber) {
             System.out.printf("Число %d больше того, что загадал компьютер\n", assumedNumber);
+            return false;
+        }
         return true;
     }
 }
