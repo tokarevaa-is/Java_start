@@ -1,3 +1,5 @@
+package com.startjava.lesson_2_3.guess;
+
 import java.util.Scanner;
 
 public class GuessNumber {
@@ -28,14 +30,12 @@ public class GuessNumber {
 
     // Проверка предложенного варианта
     private boolean isNumberCorrect(int assumedNumber) {
-        if (assumedNumber < secretNumber) {
+        if (assumedNumber == secretNumber)
+            return true;
+        else if (assumedNumber < secretNumber)
             System.out.printf("Число %d меньше того, что загадал компьютер\n", assumedNumber);
-            return false;
-        }
-        else if (assumedNumber > secretNumber) {
+        else
             System.out.printf("Число %d больше того, что загадал компьютер\n", assumedNumber);
-            return false;
-        }
-        return true;
+        return false;
     }
 }
