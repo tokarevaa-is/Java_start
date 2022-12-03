@@ -1,3 +1,5 @@
 *.class
 *_lock.*
 out/*
+*/options
+*/optionsj
