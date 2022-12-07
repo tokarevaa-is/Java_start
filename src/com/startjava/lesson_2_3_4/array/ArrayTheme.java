@@ -9,19 +9,20 @@ public class ArrayTheme {
         printArray(arrayInt1);
         for (int i = 0; i < length; i++, length--) {
             int buffer = arrayInt1[i];
-            arrayInt1[i] = arrayInt1[length - i - 1];
-            arrayInt1[length - i - 1] = buffer;
+            arrayInt1[i] = arrayInt1[length - 1];
+            arrayInt1[length - 1] = buffer;
         }
         printArray(arrayInt1);
 
         System.out.println("\n2. Вывод произведения элементов массива");
-        arrayInt1 = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+        arrayInt1 = new int[10];
         length = arrayInt1.length;
+        for (int i = 0; i < length; i++)
+            arrayInt1[i] = i;
 
         // Перемножить элементы массива
         int prodDigits = 1;
         int counter = 0;
-        length = arrayInt1.length;
         for (int i = 1; i < 9; i++) {
             prodDigits *= (arrayInt1[i] != 0 && arrayInt1[i] != 9) ? arrayInt1[i] : 1;
             System.out.printf("%d ", arrayInt1[i]);
@@ -30,8 +31,8 @@ public class ArrayTheme {
                 System.out.print("* ");
         }
         System.out.printf("= %d%n", prodDigits);
-        System.out.println("Индекс 0: 1");
-        System.out.println("Индекс 9: 10");
+        System.out.printf("Индекс %d: %d\n", 0, findIndex(arrayInt1, 0));
+        System.out.printf("Индекс %d: %d\n", 9, findIndex(arrayInt1, 9));
 
         System.out.println("\n3. Удаление элементов массива");
         double[] arrayDouble = new double[15];
@@ -73,41 +74,40 @@ public class ArrayTheme {
         }
 
         System.out.println("\n5. Генерация уникальных чисел");
-        int[] generatedNumbers = new int[40];
-        length = generatedNumbers.length;
+        int[] uniqueNumbers = new int[40];
+        length = uniqueNumbers.length;
         for (int i = 0; i < length; i++) {
-            int foundedIndex;
+            int index;
             int newNumber;
             do {
                 newNumber = (int) (Math.random() * 40) + 60;
-                foundedIndex = searchInArray(generatedNumbers, newNumber);
-            } while (foundedIndex >= 0 && foundedIndex < i);
-            generatedNumbers[i] = newNumber;
+                index = findIndex(uniqueNumbers, newNumber);
+            } while (index >= 0);
+            uniqueNumbers[i] = newNumber;
         }
 
-        Arrays.sort(generatedNumbers);
-        length = generatedNumbers.length;
+        Arrays.sort(uniqueNumbers);
         for (int i = 0; i < length; i++) {
-            System.out.printf("%d ", generatedNumbers[i]);
+            System.out.printf("%d ", uniqueNumbers[i]);
             if ((i + 1) % 10 == 0)
                 System.out.println();
         }
 
         System.out.println("\n6. Сдвиг элементов массива");
-        String[] arrayString = new String[]{"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
-        String[] arrayStringCopy = new String[getNonEmptyElementCount(arrayString)];
+        String[] srcArray = {"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
+        String[] filteredArray = new String[getNonEmptyElementCount(srcArray)];
 
         int indexBegin = -1;
         int indexNewArrayEnd = 0;
-        length = arrayString.length;
+        length = srcArray.length;
         for (int i = 0; i < length; i++) {
             // Подготавливаем текущий элемент
-            String currentStringElement = arrayString[i].replaceAll("\\s", "");
+            String currentStringElement = srcArray[i].replaceAll("\\s", "");
             if (currentStringElement.equals("")) {
                 // Определить конец копируемой последовательности
                 if (indexBegin != -1) {
                     int copyLength = (i - indexBegin);
-                    System.arraycopy(arrayString, indexBegin, arrayStringCopy, indexNewArrayEnd, copyLength);
+                    System.arraycopy(srcArray, indexBegin, filteredArray, indexNewArrayEnd, copyLength);
                     indexNewArrayEnd += copyLength;
                     indexBegin = -1;
                 }
@@ -115,8 +115,8 @@ public class ArrayTheme {
             } else if (indexBegin == -1)
                 indexBegin = i;
         }
-        printArray(arrayString);
-        printArray(arrayStringCopy);
+        printArray(srcArray);
+        printArray(filteredArray);
     }
 
     private static void printFormattedArray(double[] printedArray) {
@@ -151,7 +151,7 @@ public class ArrayTheme {
     }
 
     // Поиск в массиве
-    private static int searchInArray(int[] searchedArray, int find) {
+    private static int findIndex(int[] searchedArray, int find) {
         for (int i = 0; i < searchedArray.length; i++) {
             if (searchedArray[i] == find)
                 return i;
