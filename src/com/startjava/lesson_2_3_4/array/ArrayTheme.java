@@ -7,7 +7,7 @@ public class ArrayTheme {
         int[] arrayInt1 = {7, 4, 2, 5, 1, 3, 6};
         int length = arrayInt1.length;
         printArray(arrayInt1);
-        for (int i = 0; i < (length / 2); i++) {
+        for (int i = 0; i < length; i++, length--) {
             int buffer = arrayInt1[i];
             arrayInt1[i] = arrayInt1[length - i - 1];
             arrayInt1[length - i - 1] = buffer;
@@ -15,28 +15,23 @@ public class ArrayTheme {
         printArray(arrayInt1);
 
         System.out.println("\n2. Вывод произведения элементов массива");
-        arrayInt1 = new int[]{7, 8, 3, 4, 1, 9, 5, 2, 0, 6};
+        arrayInt1 = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
         length = arrayInt1.length;
 
         // Перемножить элементы массива
         int prodDigits = 1;
-        int[] arrayInt2 = new int[10];
         int counter = 0;
         length = arrayInt1.length;
-        for (int i = 0; i < length; i++) {
+        for (int i = 1; i < 9; i++) {
             prodDigits *= (arrayInt1[i] != 0 && arrayInt1[i] != 9) ? arrayInt1[i] : 1;
-            if (arrayInt1[i] != 0 && arrayInt1[i] != 9) {
-                System.out.printf("%d ", arrayInt1[i]);
-                counter++;
-                if (counter < length - 2)
-                    System.out.print("* ");
-            } else {
-                arrayInt2[arrayInt1[i]] = i;
-            }
+            System.out.printf("%d ", arrayInt1[i]);
+            counter++;
+            if (counter < length - 2)
+                System.out.print("* ");
         }
         System.out.printf("= %d%n", prodDigits);
-        System.out.println("Индекс 0: " + (arrayInt2[0] + 1));
-        System.out.println("Индекс 9: " + (arrayInt2[9] + 1));
+        System.out.println("Индекс 0: 1");
+        System.out.println("Индекс 9: 10");
 
         System.out.println("\n3. Удаление элементов массива");
         double[] arrayDouble = new double[15];
@@ -45,70 +40,55 @@ public class ArrayTheme {
             arrayDouble[i] = Math.random();
 
         // Определить значение среднего элемента
-        length = arrayDouble.length;
         int middleIndex = length / 2;
         double middleNum = arrayDouble[middleIndex];
 
         // Выводим исходный массив
         System.out.println("Исходный массив:");
-        for (int i = 0; i < length; i++) {
-            System.out.printf("%.3f ", arrayDouble[i]);
-
-            // Перенос на новую строку
-            if ((i + 1) % (middleIndex + 1) == 0)
-                System.out.println();
-        }
-        System.out.println();
+        printFormattedArray(arrayDouble);
 
         // Перезаписать значения
         counter = 0;
-        System.out.println("Обновлённый массив:");
-        length = arrayDouble.length;
         for (int i = 0; i < length; i++) {
             if (arrayDouble[i] > middleNum) {
-                arrayDouble[i] = 0.0;
-                System.out.printf("%2.3f ", arrayDouble[i]);
+                arrayDouble[i] = 0;
                 counter++;
-            } else
-                System.out.printf("%.3f ", arrayDouble[i]);
-
-            // Перенос на новую строку
-            if ((i + 1) % (middleIndex + 1) == 0)
-                System.out.println();
+            }
         }
 
+        System.out.println("Обновлённый массив:");
+        printFormattedArray(arrayDouble);
         System.out.println("\nКоличество обнулённых ячеек: " + counter);
 
         System.out.println("\n4. Вывод элементов массива лесенкой в обратном порядке");
-        char[] arrayChar = new char[26];
-        counter = 0;
-        for (int i = 'A'; i <= 'Z'; i++) {
-            arrayChar[counter] = (char) i;
-            counter++;
-        }
+        char[] alphabet = new char[26];
+        length = alphabet.length;
+        for (int i = 0; i < length; i++)
+            alphabet[i] = (char) ('A' + i);
 
-        length = arrayChar.length;
         for (int i = 0; i <= length; i++) {
             for (int j = 0; j < i; j++)
-                System.out.print(arrayChar[(length - j - 1)]);
+                System.out.print(alphabet[(length - j - 1)]);
             System.out.println();
         }
 
         System.out.println("\n5. Генерация уникальных чисел");
-        arrayInt1 = new int[40];
-        length = arrayInt1.length;
+        int[] generatedNumbers = new int[40];
+        length = generatedNumbers.length;
         for (int i = 0; i < length; i++) {
             int foundedIndex;
+            int newNumber;
             do {
-                arrayInt1[i] = (int) (Math.random() * 40) + 60;
-                foundedIndex = searchInArray(arrayInt1, arrayInt1[i]);
+                newNumber = (int) (Math.random() * 40) + 60;
+                foundedIndex = searchInArray(generatedNumbers, newNumber);
             } while (foundedIndex >= 0 && foundedIndex < i);
+            generatedNumbers[i] = newNumber;
         }
 
-        Arrays.sort(arrayInt1);
-        length = arrayInt1.length;
+        Arrays.sort(generatedNumbers);
+        length = generatedNumbers.length;
         for (int i = 0; i < length; i++) {
-            System.out.printf("%d ", arrayInt1[i]);
+            System.out.printf("%d ", generatedNumbers[i]);
             if ((i + 1) % 10 == 0)
                 System.out.println();
         }
@@ -137,6 +117,18 @@ public class ArrayTheme {
         }
         printArray(arrayString);
         printArray(arrayStringCopy);
+    }
+
+    private static void printFormattedArray(double[] printedArray) {
+        int middleIndex = printedArray.length / 2;
+        for (int i = 0; i < printedArray.length; i++) {
+            System.out.printf("%.3f ", printedArray[i]);
+
+            // Перенос на новую строку
+            if ((i + 1) % (middleIndex + 1) == 0)
+                System.out.println();
+        }
+        System.out.println();
     }
 
     // Вывод целочисленного массива
