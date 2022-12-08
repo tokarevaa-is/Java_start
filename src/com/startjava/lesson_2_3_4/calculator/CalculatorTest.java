@@ -7,23 +7,28 @@ public class CalculatorTest {
 
     public static void main(String[] args) {
         System.out.println("Калькулятор");
-        scanner.reset();
+
+        // Запуск калькуляции
+        run();
+    }
+
+    private static void run() {
+        if (calculate())
+            run();
+    }
+
+    private static boolean calculate() {
         Calculator calculator = new Calculator();
+        System.out.print("Введите математическое выражение: ");
+        String expression = scanner.nextLine();
+        calculator.setExpression(expression);
 
-        // Запуск итерации расчёта
-        do {
-            System.out.print("Введите математическое выражение: ");
-            String expression = scanner.nextLine();
-            calculator.setExpression(expression);
+        // Выполнить расчёт (в формате используем %s для красивого вывода результата)
+        double result = calculator.calculate();
+        System.out.printf("Результат: %s\n", result); //
 
-            // Выполнить расчёт (в формате используем %s для красивого вывода результата)
-            double result = calculator.calculate();
-            System.out.printf("Результат: %s\n", result); //
-
-            // Продолжить выполнение?
-            if (!continueCalculation())
-                return;
-        } while (true);
+        // Продолжить выполнение?
+        return continueCalculation();
     }
 
     private static boolean continueCalculation() {
