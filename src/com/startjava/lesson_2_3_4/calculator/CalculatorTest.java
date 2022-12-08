@@ -1,48 +1,39 @@
-package com.startjava.lesson_2_3.calculator;
+package com.startjava.lesson_2_3_4.calculator;
 
 import java.util.Scanner;
 
 public class CalculatorTest {
+    private static final Scanner scanner = new Scanner(System.in);
+
     public static void main(String[] args) {
         System.out.println("Калькулятор");
-
+        scanner.reset();
         Calculator calculator = new Calculator();
-        Scanner scanner = new Scanner(System.in);
-        boolean isContinued = false;
 
         // Запуск итерации расчёта
         do {
-            System.out.print("Введите первое число: ");
-            int num1 = scanner.nextInt();
-            boolean isSignCorrect = false;
-            char sign = ' ';
-
-            // Ввести и проверить знак
-            do {
-                System.out.print("Введите знак математической операции: ");
-                sign = scanner.next().charAt(0);
-            } while (!calculator.checkSign(sign));
-
-            System.out.print("Введите второе число: ");
-            int num2 = scanner.nextInt();
+            System.out.print("Введите математическое выражение: ");
+            String expression = scanner.nextLine();
+            calculator.setExpression(expression);
 
             // Выполнить расчёт (в формате используем %s для красивого вывода результата)
-            double result = calculator.performCalculation(num1, sign, num2);
-            System.out.printf("%d %s %d = %s\n", num1, sign, num2, result); //
+            double result = calculator.calculate();
+            System.out.printf("Результат: %s\n", result); //
 
             // Продолжить выполнение?
-            boolean isAnswerCorrect = true;
-            do {
-                System.out.println("Хотите продолжить вычисления? [yes/no]:");
-                String userAnswer = scanner.next();
-                isAnswerCorrect = true;
-                if (userAnswer.equals("yes"))
-                    isContinued = true;
-                else if (userAnswer.equals("no"))
-                    isContinued = false;
-                else
-                    isAnswerCorrect = false;
-            } while (!isAnswerCorrect);
-        } while (isContinued);
+            if (!continueCalculation())
+                return;
+        } while (true);
+    }
+
+    private static boolean continueCalculation() {
+        do {
+            System.out.println("Хотите продолжить вычисления? [yes/no]:");
+            String userAnswer = scanner.nextLine();
+            if (userAnswer.equals("yes"))
+                return true;
+            else if (userAnswer.equals("no"))
+                return false;
+        } while (true);
     }
 }
