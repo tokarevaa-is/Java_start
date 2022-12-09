@@ -21,17 +21,15 @@ public class CalculatorTest {
         Calculator calculator = new Calculator();
         System.out.print("Введите математическое выражение: ");
         String expression = scanner.nextLine();
-        calculator.setExpression(expression);
 
         // Выполнить расчёт (в формате используем %s для красивого вывода результата)
-        double result = calculator.calculate();
-        System.out.printf("Результат: %s\n", result); //
+        System.out.printf("Результат: %s\n", calculator.calculate(expression)); //
 
         // Продолжить выполнение?
-        return continueCalculation();
+        return isNext();
     }
 
-    private static boolean continueCalculation() {
+    private static boolean isNext() {
         do {
             System.out.println("Хотите продолжить вычисления? [yes/no]:");
             String userAnswer = scanner.nextLine();
