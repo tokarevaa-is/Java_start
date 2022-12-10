@@ -3,7 +3,7 @@ package com.startjava.lesson_2_3_4.calculator;
 public class Calculator {
     private String[] partsExpression;
 
-    public void setExpression(String expression) {
+    private void setExpression(String expression) {
         partsExpression = expression.split(" ");
     }
 
@@ -24,10 +24,8 @@ public class Calculator {
             case '/':
                 if (num2 != 0)
                     return num1 / (double) num2;
-                else {
-                    System.out.println("Второе число не может быть 0");
-                    return 0;
-                }
+                System.out.println("Второе число не может быть 0");
+                return 0;
             case '%':
                 if (num2 == 0) {
                     System.out.println("Второе число не может быть 0");

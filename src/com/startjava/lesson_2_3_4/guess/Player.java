@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Player {
     private String name;
     private int[] numbers = new int[10];
-    private int tryCount;
+    private int attemptCount;
 
     public Player(String name) {
         this.name = name;
@@ -15,28 +15,28 @@ public class Player {
         return name;
     }
 
-    public int getTryCount() {
-        return tryCount;
+    public int getAttemptCount() {
+        return attemptCount;
     }
 
     public int getNumber() {
-        return numbers[tryCount - 1];
+        return numbers[attemptCount - 1];
     }
     
-    public void setNumber(int number) {
-        tryCount++;
-        numbers[tryCount - 1] = number;
+    public void addNumber(int number) {
+        numbers[attemptCount] = number;
+        attemptCount++;
     }
 
     // Вывести все элементы массива
-    public int[] getPlayerNumber() {
-        return Arrays.copyOf(numbers, tryCount);
+    public int[] getNumbers() {
+        return Arrays.copyOf(numbers, attemptCount);
     }
 
     // Сбросить все значения
-    public void refresh() {
-        if (tryCount != 0)
-            Arrays.fill(numbers, 0, tryCount, 0);
-        tryCount = 0;
+    public void clear() {
+        if (attemptCount != 0)
+            Arrays.fill(numbers, 0, attemptCount, 0);
+        attemptCount = 0;
     }
 }

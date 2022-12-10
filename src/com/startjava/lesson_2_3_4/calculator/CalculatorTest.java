@@ -3,7 +3,7 @@ package com.startjava.lesson_2_3_4.calculator;
 import java.util.Scanner;
 
 public class CalculatorTest {
-    private static final Scanner scanner = new Scanner(System.in);
+    private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         System.out.println("Калькулятор");
@@ -35,7 +35,7 @@ public class CalculatorTest {
             String userAnswer = scanner.nextLine();
             if (userAnswer.equals("yes"))
                 return true;
-            else if (userAnswer.equals("no"))
+            if (userAnswer.equals("no"))
                 return false;
         } while (true);
     }

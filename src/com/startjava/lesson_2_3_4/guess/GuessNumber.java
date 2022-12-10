@@ -13,15 +13,10 @@ public class GuessNumber {
         this.player2 = player2;
     }
 
-    public void run() {
-        if (gameRound())
-            run();
-    }
+    public void gameRound() {
 
-    public boolean gameRound() {
-
-        player1.refresh();
-        player2.refresh();
+        player1.clear();
+        player2.clear();
         secretNumber = ((int) (Math.random() * 100)) + 1;
         System.out.println("Число загадано.");
         Player activePlayer = player2;
@@ -33,25 +28,23 @@ public class GuessNumber {
             activePlayer = (activePlayer == player1 ? player2 : player1);
 
             System.out.printf("Ход игрока %s. Отгадай число: ", activePlayer.getName());
-            activePlayer.setNumber(scanner.nextInt());
+            activePlayer.addNumber(scanner.nextInt());
             answerCorrect = isNumberCorrect(activePlayer.getNumber());
 
             if (answerCorrect) {
                 System.out.printf("Игрок %s угадал число %d c %d попытки.\n",
-                        activePlayer.getName(), activePlayer.getNumber(), activePlayer.getTryCount());
+                        activePlayer.getName(), activePlayer.getNumber(), activePlayer.getAttemptCount());
                 break;
             }
 
-            if (activePlayer.getTryCount() == 10)
+            if (activePlayer.getAttemptCount() == 10)
                 System.out.printf("У %s закончились попытки", activePlayer.getName());
-        } while (player2.getTryCount() <= 10);
+        } while (player2.getAttemptCount() <= 10);
 
-        // Вывести все введёные числа
-        printNumbers(player1.getPlayerNumber());
-        printNumbers(player2.getPlayerNumber());
+        // Вывести все введённые числа
+        printNumbers(player1.getNumbers());
+        printNumbers(player2.getNumbers());
 
-        // Продолжить/прекратить игру
-        return isContinued();
     }
 
     // Проверка предложенного варианта
@@ -70,16 +63,5 @@ public class GuessNumber {
             System.out.print(number + " ");
         }
         System.out.println();
-    }
-
-    // Продолжить или прервать игру
-    private boolean isContinued() {
-        String playerAnswer;
-        do {
-            System.out.print("Хотите продолжить игру? [yes/no]: ");
-            playerAnswer = scanner.next();
-        } while (!playerAnswer.equals("yes") && !playerAnswer.equals("no"));
-
-        return playerAnswer.equals("yes");
     }
 }
