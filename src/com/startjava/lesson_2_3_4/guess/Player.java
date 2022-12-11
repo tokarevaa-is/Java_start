@@ -36,7 +36,7 @@ public class Player {
     private int validNumber(int number) {
         int validNumber = number;
         if (validNumber <= 0 || validNumber > 100) {
-            System.out.print("Число больжно находиться в интервале (0:100]. Повторите ввод: ");
+            System.out.print("Число не находиться в интервале (0:100]. Повторите ввод: ");
             validNumber = validNumber(scanner.nextInt());
         }
         return validNumber;
