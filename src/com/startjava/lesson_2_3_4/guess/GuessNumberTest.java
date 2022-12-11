@@ -7,18 +7,21 @@ public class GuessNumberTest {
 
     public static void main(String[] args) {
         // Инициализация игроков
-        System.out.println("У каждого игрока по 10 попыток");
-        System.out.print("Введите имя игрока 1: ");
-        Player player1 = new Player(scanner.next());
-        System.out.print("Введите имя игрока 2: ");
-        Player player2 = new Player(scanner.next());
-        GuessNumber game = new GuessNumber(player1, player2);
+        System.out.printf("У каждого игрока по %d попыток\n", GuessNumber.attemptLimit);
+
+        Player[] players = new Player[GuessNumber.playersCount];
+        for (int i = 0; i < GuessNumber.playersCount; i++){
+            System.out.printf("Введите имя игрока %d: ", i + 1);
+            players[i] = new Player(scanner.next());
+        }
+
+        GuessNumber game = new GuessNumber(players);
 
         run(game);
     }
 
     public static void run(GuessNumber game) {
-        game.gameRound();
+        game.start();
         if (isContinued())
             run(game);
     }
