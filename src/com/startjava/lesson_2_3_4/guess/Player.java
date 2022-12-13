@@ -5,11 +5,10 @@ import java.util.Scanner;
 
 public class Player {
     private String name;
-    private int[] numbers = new int[10];
+    private int[] numbers = new int[GuessNumber.ATTEMPT_LIMIT];
     private int attemptCount;
     private int win;
     private Scanner scanner = new Scanner(System.in);
-
 
     public Player(String name) {
         this.name = name;

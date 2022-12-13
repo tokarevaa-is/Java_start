@@ -7,10 +7,10 @@ public class GuessNumberTest {
 
     public static void main(String[] args) {
         // Инициализация игроков
-        System.out.printf("У каждого игрока по %d попыток\n", GuessNumber.attemptLimit);
+        System.out.printf("У каждого игрока по %d попыток\n", GuessNumber.ATTEMPT_LIMIT);
 
-        Player[] players = new Player[GuessNumber.playersCount];
-        for (int i = 0; i < GuessNumber.playersCount; i++){
+        Player[] players = new Player[GuessNumber.PLAYERS_COUNT];
+        for (int i = 0; i < GuessNumber.PLAYERS_COUNT; i++) {
             System.out.printf("Введите имя игрока %d: ", i + 1);
             players[i] = new Player(scanner.next());
         }
